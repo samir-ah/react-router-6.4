@@ -1,4 +1,5 @@
 import {
+  ActionFunctionArgs,
   redirect,
   useActionData,
   useNavigate,
@@ -6,10 +7,10 @@ import {
 } from 'react-router-dom';
 
 import NewPostForm from '../components/NewPostForm';
-import { savePost } from '../util/api';
+import { savePost } from '../util/posts';
 
 function NewPostPage() {
-  const data = useActionData();
+  const data: any = useActionData() ;
 
   const navigation = useNavigation();
   console.log(navigation.state);
@@ -33,7 +34,7 @@ function NewPostPage() {
 
 export default NewPostPage;
 
-export async function action({ request }) {
+export async function action({ request }: ActionFunctionArgs) {
   const data = await request.formData();
 
   const validationError = await savePost(data);

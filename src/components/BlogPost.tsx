@@ -1,6 +1,12 @@
 import classes from './BlogPost.module.css';
+import { PropsWithChildren } from 'react';
 
-function BlogPost({ title, text }) {
+type Props = PropsWithChildren<{
+  title: string,
+  text: string,
+}>
+
+function BlogPost({ title, text } : Props ) {
   return (
     <article className={classes.post}>
       <h1>{title}</h1>

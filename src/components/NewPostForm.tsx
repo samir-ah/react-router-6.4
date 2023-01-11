@@ -1,8 +1,13 @@
+import { PropsWithChildren } from 'react';
 import { Form } from 'react-router-dom';
 
 import classes from './NewPostForm.module.css';
+type Props = PropsWithChildren<{
+  onCancel: React.MouseEventHandler<HTMLButtonElement>,
+  submitting: boolean,
+}>
 
-function NewPostForm({ onCancel, submitting }) {
+function NewPostForm({ onCancel, submitting }: Props) {
   return (
     <Form className={classes.form} action="/blog/new" method="post">
       <fieldset>

@@ -1,8 +1,13 @@
+import { PropsWithChildren } from 'react';
 import { createPortal } from 'react-dom';
 
 import classes from './Modal.module.css';
 
-function Modal({ children, onClose }) {
+type Props = PropsWithChildren<{
+ onClose: React.MouseEventHandler<HTMLDivElement>
+}>
+
+function Modal({ children, onClose }: Props) {
   return createPortal(
     <div className={classes.backdrop} onClick={onClose}>
       <dialog
@@ -13,7 +18,7 @@ function Modal({ children, onClose }) {
         {children}
       </dialog>
     </div>,
-    document.getElementById('modal')
+    document.getElementById('modal') as HTMLElement
   );
 }
 
